@@ -77,6 +77,8 @@ jobs:
         run: |
           if [ "$MOLECULE_DISTRO" = "opensuse_tumbleweed" ]; then
             export MOLECULE_DOCKER_COMMAND="/usr/lib/systemd/systemd"
+          elif [ "$MOLECULE_DISTRO" = "alpine" ]; then
+            export MOLECULE_DOCKER_COMMAND="/sbin/init"
           fi
           molecule --version
           molecule test -s ssh_hardening
